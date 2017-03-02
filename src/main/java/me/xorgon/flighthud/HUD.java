@@ -29,7 +29,7 @@ public class HUD {
 
         Objective obj = scoreboard.registerNewObjective("hud", "dummy");
         obj.setDisplaySlot(DisplaySlot.SIDEBAR);
-        obj.getScore(ChatColor.GREEN + "Airspeed b/m").setScore(0);
+        obj.getScore(ChatColor.GREEN + "Airspeed b/s").setScore(0);
         obj.getScore(ChatColor.GREEN + "Ground speed").setScore(0);
         obj.getScore(ChatColor.GREEN + "Heading").setScore(0);
 
@@ -41,7 +41,7 @@ public class HUD {
     public void setValues(int airspeed, int groundSpeed, int heading) {
         Objective obj = scoreboard.getObjective(DisplaySlot.SIDEBAR);
         obj.setDisplayName("FlightHUD");
-        obj.getScore(ChatColor.GREEN + "Airspeed b/m").setScore(airspeed);
+        obj.getScore(ChatColor.GREEN + "Airspeed b/s").setScore(airspeed);
         obj.getScore(ChatColor.GREEN + "Ground speed").setScore(groundSpeed);
         obj.getScore(ChatColor.GREEN + "Heading").setScore(heading);
     }
@@ -75,8 +75,8 @@ public class HUD {
 
             Vector v = hud.getPlayer().getVelocity();
 
-            int airspeed = (int) Math.round(60 * v.length());
-            int groundSpeed = (int) Math.round(60 * Math.sqrt(v.getX() * v.getX() + v.getZ() * v.getZ()));
+            int airspeed = (int) Math.round(20 * v.length());
+            int groundSpeed = (int) Math.round(20 * Math.sqrt(v.getX() * v.getX() + v.getZ() * v.getZ()));
             int heading = Math.round(player.getLocation().getYaw());
             if (heading < 0) {
                 heading += 360;
