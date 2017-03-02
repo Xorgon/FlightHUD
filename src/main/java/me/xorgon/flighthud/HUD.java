@@ -68,10 +68,9 @@ public class HUD {
         }
 
         public void run() {
+            boolean didGlide = false;
 
-            if (!player.isGliding()) {
-                hud.getManager().removeHUD(hud.getPlayer());
-            }
+            while(player.isGliding()) {
 
             Vector v = hud.getPlayer().getVelocity();
 
@@ -82,6 +81,11 @@ public class HUD {
                 heading += 360;
             }
             hud.setValues(airspeed, groundSpeed, heading);
+            didGlide = true;
+          }
+
+          if(didGlide)
+            hud.getManager().removeHUD(hud.getPlayer());
         }
     }
 }
