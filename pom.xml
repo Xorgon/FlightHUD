@@ -6,7 +6,7 @@
 
     <groupId>me.xorgon</groupId>
     <artifactId>FlightHUD</artifactId>
-    <version>1.0.2</version>
+    <version>1.1.0</version>
 
     <properties>
         <package>me.xorgon.flighthud</package>

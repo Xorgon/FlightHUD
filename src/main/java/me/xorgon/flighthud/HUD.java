@@ -32,18 +32,20 @@ public class HUD {
         obj.getScore(ChatColor.GREEN + "Airspeed b/s").setScore(0);
         obj.getScore(ChatColor.GREEN + "Ground speed").setScore(0);
         obj.getScore(ChatColor.GREEN + "Heading").setScore(0);
+        obj.getScore(ChatColor.GREEN + "Sink rate b/s").setScore(0);
 
         player.setScoreboard(scoreboard);
 
         taskID = Bukkit.getScheduler().scheduleSyncRepeatingTask(plugin, new HUDScheduler(this), 0, 2);
     }
 
-    public void setValues(int airspeed, int groundSpeed, int heading) {
+    public void setValues(int airspeed, int groundSpeed, int heading, int sinkRate) {
         Objective obj = scoreboard.getObjective(DisplaySlot.SIDEBAR);
         obj.setDisplayName("FlightHUD");
         obj.getScore(ChatColor.GREEN + "Airspeed b/s").setScore(airspeed);
         obj.getScore(ChatColor.GREEN + "Ground speed").setScore(groundSpeed);
         obj.getScore(ChatColor.GREEN + "Heading").setScore(heading);
+        obj.getScore(ChatColor.GREEN + "Sink rate b/s").setScore(sinkRate);
     }
 
     public Player getPlayer() {
@@ -76,12 +78,13 @@ public class HUD {
             Vector v = hud.getPlayer().getVelocity();
 
             int airspeed = (int) Math.round(20 * v.length());
+            int sinkRate = - (int) Math.round(20 * v.getY());
             int groundSpeed = (int) Math.round(20 * Math.sqrt(v.getX() * v.getX() + v.getZ() * v.getZ()));
             int heading = Math.round(player.getLocation().getYaw());
             if (heading < 0) {
                 heading += 360;
             }
-            hud.setValues(airspeed, groundSpeed, heading);
+            hud.setValues(airspeed, groundSpeed, heading, sinkRate);
         }
     }
 }
