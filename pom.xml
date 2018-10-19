@@ -6,12 +6,12 @@
 
     <groupId>me.xorgon</groupId>
     <artifactId>FlightHUD</artifactId>
-    <version>1.1.0</version>
+    <version>1.2.0</version>
 
     <properties>
         <package>me.xorgon.flighthud</package>
         <main.class>${package}.FlightHUDPlugin</main.class>
-        <spigot-api.version>1.12-R0.1-SNAPSHOT</spigot-api.version>
+        <spigot-api.version>1.13.1-R0.1-SNAPSHOT</spigot-api.version>
     </properties>
 
     <repositories>
